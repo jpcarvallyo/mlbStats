@@ -1,0 +1,26 @@
+{
+  "name": "mlbstats",
+  "version": "1.0.0",
+  "description": "API/webscraper to get MLB stats",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "NODE_ENV=production node src/index.js",
+    "dev": "NODE_ENV=development nodemon src/index.js",
+    "bin": "node writebin.js",
+    "scrape": "node src/utils/scrape/",
+    "savePlayerStats": "NODE_ENV=local node src/utils/saveToDB.js"
+  },
+  "keywords": [
+    "mlb"
+  ],
+  "author": "James Carvallyo II",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.3.1",
+    "mongodb": "^5.7.0",
+    "nodemon": "^3.0.1"
+  }
+}
