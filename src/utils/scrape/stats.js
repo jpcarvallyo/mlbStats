@@ -64,14 +64,4 @@ async function getStats(playerUrl, type = "Hitting", modeType = "season") {
   }
 }
 
-// Example of how to use stats function
-(async () => {
-  const data = await getStats(
-    "https://www.baseball-almanac.com/players/player.php?p=bondsba01",
-    seasonType.hitting,
-    "season"
-  );
-  console.log(data);
-})();
-
 module.exports = { getStats };
