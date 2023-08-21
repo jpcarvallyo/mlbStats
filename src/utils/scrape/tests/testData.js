@@ -578,7 +578,27 @@ const careerData = {
   },
 };
 
+const bio = {
+  birthName: "Henry Louis Aaron (Twitter: @HenryLouisAaron)",
+  nickName: "Bad Henry or Hammerin' Hank",
+  bornOn: "02-05-1934  (Aquarius)",
+  diedOn: "01-22-2021 (500 Oldest Living)",
+  diedIn: "Atlanta, Georgia",
+  cemetery: "South-View Cemetery, Atlanta, Georgia",
+  highSchool: "Allen Institute (Mobile, AL)",
+  college: "None Attended",
+  bats: "Right",
+  throws: "Right",
+  height: "6-00",
+  weight: "180",
+  firstGame: "04-13-1954 (Age 20)",
+  lastGame: "10-03-1976",
+  draft: "Not Applicable / Signing Bonus = $10,000",
+  bornIn: "Mobile, Alabama",
+};
+
 module.exports = {
   seasonsData,
   careerData,
+  bio,
 };
