@@ -1,18 +1,18 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const { seasonStatsStructure } = require("../constants.js");
+const { seasonStatsStructure, seasonType } = require("../constants.js");
 
-async function seasonStats(playerUrl) {
+async function seasonStats(playerUrl, type) {
   try {
     let url = playerUrl;
     const response = await axios.get(url);
     const html = response.data;
     const $ = cheerio.load(html);
 
-    const tablesWithHittingStats = $("table.boxed").filter((index, element) => {
-      return $(element).find('p:contains("Hitting Stats")').length > 0;
+    const tableStats = $("table.boxed").filter((index, element) => {
+      return $(element).find(`p:contains("${type} Stats")`).length > 0;
     })[0];
-    const rows = $(tablesWithHittingStats).find("tr");
+    const rows = $(tableStats).find("tr");
     const seasons = [];
 
     rows.each((index, element) => {
@@ -115,7 +115,8 @@ async function seasonStats(playerUrl) {
 // Example of how to use seasonStats function
 // (async () => {
 //   const data = await seasonStats(
-//     "https://www.baseball-almanac.com/players/player.php?p=bondsba01"
+//     "https://www.baseball-almanac.com/players/player.php?p=bondsba01",
+//     seasonType.hitting
 //   );
 //   console.log(data);
 // })();

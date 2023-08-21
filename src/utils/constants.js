@@ -23,6 +23,14 @@ const seasonStatsStructure = {
   sluggingAverage: null,
 };
 
+const seasonType = {
+  hitting: "Hitting",
+  fielding: "Fielding",
+  pitching: "Pitching",
+  miscellaneous: "Miscellaneous Items",
+};
+
 module.exports = {
   seasonStatsStructure,
+  seasonType,
 };
