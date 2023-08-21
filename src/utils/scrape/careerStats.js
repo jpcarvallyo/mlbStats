@@ -2,11 +2,9 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const cleanUrl = require("../careerStatsUrlLinter");
 
-async function careerStats(player) {
+async function careerStats(player, playerUrl) {
   try {
-    let url = cleanUrl(player);
-    console.log(url);
-    // const url = `https://www.baseball-almanac.com/players/player.php?p=aaronha01`;
+    let url = playerUrl || cleanUrl(player);
     const response = await axios.get(url);
     const html = response.data;
     const $ = cheerio.load(html);
@@ -129,29 +127,4 @@ async function careerStats(player) {
   }
 }
 
-// careerStats();
-
 module.exports = careerStats;
-
-// [
-//   "Years",
-//   "G",
-//   "AB",
-//   "R",
-//   "H",
-//   "2B",
-//   "3B",
-//   "HR",
-//   "GRSL",
-//   "RBI",
-//   "BB",
-//   "IBB",
-//   "SO",
-//   "SH",
-//   "SF",
-//   "HBP",
-//   "GIDP",
-//   "AVG",
-//   "OBP",
-//   "SLG",
-// ]
