@@ -1,11 +1,11 @@
 const homeruns = require("./homeruns");
-const careerStats = require("./careerStats");
 const { generateAllPlayerUrls } = require("./allPlayersUrls");
 const { bioData } = require("./bioData");
+const { getStats } = require("./stats");
 
 module.exports = {
   homeruns,
-  careerStats,
   generateAllPlayerUrls,
   bioData,
+  getStats,
 };
