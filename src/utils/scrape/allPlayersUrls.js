@@ -1,17 +1,7 @@
-const fs = require("fs");
-const path = require("path");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-const playerHrefs = [];
-
-async function scrapeUrlsPerPage(url) {
-  try {
-    // scrape every url in the page
-  } catch (error) {}
-}
-
-async function scrapePlayerUrlsFromPage(url) {
+async function scrapePlayerUrlsFromPage(url, playerHrefs) {
   try {
     // scrape every url in the page
     const response = await axios.get(url);
@@ -55,15 +45,13 @@ async function generatePages() {
   }
 }
 
-(async () => {
-  const twoLevelsUpDir = path.join(__dirname, "..", "..", "..");
-  const pathToJson = `${twoLevelsUpDir}/data/playerUrls.json`;
-
+async function generateAllPlayerUrls() {
+  const playerHrefs = [];
   const urls = await generatePages();
 
   // Use .map() to create an array of promises and then await them
   const promises = urls.map(async (url) => {
-    await scrapePlayerUrlsFromPage(url);
+    await scrapePlayerUrlsFromPage(url, playerHrefs);
   });
 
   // Wait for all the promises to settle
@@ -79,15 +67,20 @@ async function generatePages() {
       console.error(`Promise ${index} rejected with reason:`, result.reason);
     }
   });
-  // Convert the array to JSON format
-  const playersJSON = JSON.stringify(playerHrefs, null, 2); // The second argument adds indentation for better readability
 
-  // Write the JSON data to a file
-  fs.writeFile(pathToJson, playersJSON, "utf8", (error) => {
-    if (error) {
-      console.error("Error writing to file:", error);
-    } else {
-      console.log("Players data has been saved to players.json");
-    }
-  });
-})();
+  return playerHrefs;
+}
+
+// Example of how to writeToFile on machine.
+// (async () => {
+//   const twoLevelsUpDir = path.join(__dirname, "..", "..", "..");
+//   const pathToJson = `${twoLevelsUpDir}/data/playerUrls.json`;
+//   const hrefs = await generateAllPlayerUrls();
+//   await writeToFile(hrefs, pathToJson);
+// })();
+
+module.exports = {
+  generatePages,
+  generateAllPlayerUrls,
+  scrapePlayerUrlsFromPage,
+};

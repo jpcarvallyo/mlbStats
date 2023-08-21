@@ -23,4 +23,18 @@ const writeLocally = (data) => {
   });
 };
 
-module.exports = writeLocally;
+async function writeToFile(data, pathToFile) {
+  // Convert the array to JSON format
+  const dataJSON = JSON.stringify(data, null, 2); // The second argument adds indentation for better readability
+
+  // Write the JSON data to a file
+  fs.writeFile(pathToFile, dataJSON, "utf8", (error) => {
+    if (error) {
+      console.error("Error writing to file:", error);
+    } else {
+      console.log(`Data has been saved to ${pathToFile}`);
+    }
+  });
+}
+
+module.exports = { writeLocally, writeToFile };
