@@ -23,10 +23,6 @@ async function main() {
   } catch (error) {
     console.error("Error upserting players: ", error);
   }
-  //   for (const player of players) {
-  //     const stats = await careerStats(player);
-  //     await upsertPlayer(player, stats);
-  //   }
 }
 
 main();
