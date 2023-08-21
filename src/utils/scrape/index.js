@@ -1,11 +1,11 @@
-const writeLocally = require("../writeLocally");
 const homeruns = require("./homeruns");
-
-(async () => {
-  const data = await homeruns();
-  writeLocally(data);
-})();
+const careerStats = require("./careerStats");
+const { generateAllPlayerUrls } = require("./allPlayersUrls");
+const { bioData } = require("./bioData");
 
 module.exports = {
   homeruns,
+  careerStats,
+  generateAllPlayerUrls,
+  bioData,
 };

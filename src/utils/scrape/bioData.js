@@ -64,4 +64,4 @@ async function bioData(url) {
   }
 }
 
-module.exports = bioData;
+module.exports = { bioData };
