@@ -4,11 +4,9 @@
   "description": "API/webscraper to get MLB stats",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test",
+    "test": "npx jest",
     "start": "NODE_ENV=production node src/index.js",
     "dev": "NODE_ENV=development nodemon src/index.js",
-    "bin": "node writebin.js",
-    "scrape": "node src/utils/scrape/",
     "savePlayerStats": "NODE_ENV=local node src/utils/saveToDB.js"
   },
   "keywords": [
