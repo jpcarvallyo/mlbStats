@@ -4,8 +4,8 @@ const {
   seasonStatsStructure,
   seasonType,
   careerStatsStructure,
-} = require("../constants.js");
-const { modeProcessor } = require("../mode.js");
+} = require("../utils/constants.js");
+const { modeProcessor } = require("../utils/mode.js");
 
 async function getStats(playerUrl, type = "Hitting", modeType = "season") {
   try {

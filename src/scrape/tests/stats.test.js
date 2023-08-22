@@ -1,5 +1,5 @@
 const { getStats } = require("../");
-const { seasonType } = require("../../constants.js");
+const { seasonType } = require("../../utils/constants");
 const { seasonsData, careerData } = require("./testData");
 
 describe("get stats function", () => {
