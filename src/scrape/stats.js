@@ -7,7 +7,8 @@ const {
 } = require("../utils/constants.js");
 const { modeProcessor } = require("../utils/mode.js");
 
-async function getStats(playerUrl, type = "Hitting", modeType = "season") {
+async function getStats(config) {
+  const { playerUrl, type = seasonType.hitting, modeType = "season" } = config;
   try {
     let url = playerUrl;
     const response = await axios.get(url);
