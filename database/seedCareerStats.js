@@ -17,7 +17,11 @@ async function main() {
   // example would be:
   // const playerUrls = fs.readFile(pathToFile);
   // const upsertPromises = playerUrls.map(async (playerUrl) => {
-  //   await getStats(playerUrl, seasonType.hitting, 'season');
+  // const config = {
+  //   playerUrl,
+  //   category: categoryType.hitting,
+  // };
+  //   await getStats(config);
   //   return await upsertPlayer(player, stats);
   // })
 

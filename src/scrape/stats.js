@@ -2,13 +2,17 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const {
   seasonStatsStructure,
-  seasonType,
+  categoryType,
   careerStatsStructure,
 } = require("../utils/constants.js");
 const { modeProcessor } = require("../utils/mode.js");
 
 async function getStats(config) {
-  const { playerUrl, type = seasonType.hitting, modeType = "season" } = config;
+  const {
+    playerUrl,
+    category = categoryType.hitting,
+    modeType = "season",
+  } = config;
   try {
     let url = playerUrl;
     const response = await axios.get(url);
@@ -16,7 +20,7 @@ async function getStats(config) {
     const $ = cheerio.load(html);
 
     const tableStats = $("table.boxed").filter((index, element) => {
-      return $(element).find(`p:contains("${type} Stats")`).length > 0;
+      return $(element).find(`p:contains("${category} Stats")`).length > 0;
     })[0];
     const rows = $(tableStats).find(
       `tr${modeType === "career" ? ":last-child" : ""}`
@@ -27,7 +31,9 @@ async function getStats(config) {
       if (modeType === "career" || index >= 2) {
         const obj = Object.assign(
           {},
-          modeType === "season" ? seasonStatsStructure : careerStatsStructure
+          modeType === "season"
+            ? seasonStatsStructure.hitting
+            : careerStatsStructure.hitting
         );
         const columns = $(element).find("td");
         const rowData = [];

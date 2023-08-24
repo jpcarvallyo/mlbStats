@@ -1,5 +1,5 @@
 const { getStats } = require("../");
-const { seasonType } = require("../../utils/constants");
+const { categoryType } = require("../../utils/constants");
 const { seasonsData, careerData } = require("./testData");
 
 describe("get stats function", () => {
@@ -7,7 +7,7 @@ describe("get stats function", () => {
     const config = {
       playerUrl:
         "https://www.baseball-almanac.com/players/player.php?p=aaronha01",
-      type: seasonType.hitting,
+      category: categoryType.hitting,
     };
     const data = await getStats(config);
     expect(data).toEqual(seasonsData);
@@ -17,7 +17,7 @@ describe("get stats function", () => {
     const config = {
       playerUrl:
         "https://www.baseball-almanac.com/players/player.php?p=aaronha01",
-      type: seasonType.hitting,
+      category: categoryType.hitting,
       modeType: "career",
     };
     const data = await getStats(config);
