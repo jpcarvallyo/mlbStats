@@ -134,10 +134,10 @@ const careerProcessor = function (item, index, careerObj) {
   }
 };
 
-function modeProcessor(mode, item, index, obj) {
-  if (mode === "season") {
+function modeProcessor(isSeason, isCareer, item, index, obj) {
+  if (isSeason) {
     seasonProcessor(item, index, obj);
-  } else if (mode === "career") {
+  } else if (isCareer) {
     careerProcessor(item, index, obj);
   }
 }

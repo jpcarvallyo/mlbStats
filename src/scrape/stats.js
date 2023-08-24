@@ -5,13 +5,15 @@ const {
   categoryType,
   careerStatsStructure,
 } = require("../utils/constants.js");
+const { tableQuery, rowQuery } = require("../utils/cheerioQueries.js");
 const { modeProcessor } = require("../utils/mode.js");
 
 async function getStats(config) {
   const {
     playerUrl,
     category = categoryType.hitting,
-    modeType = "season",
+    isSeason = true,
+    isCareer = false,
   } = config;
   try {
     let url = playerUrl;
@@ -20,20 +22,17 @@ async function getStats(config) {
     const $ = cheerio.load(html);
 
     const tableStats = $("table.boxed").filter((index, element) => {
-      return $(element).find(`p:contains("${category} Stats")`).length > 0;
+      return $(element).find(tableQuery(category)).length > 0;
     })[0];
-    const rows = $(tableStats).find(
-      `tr${modeType === "career" ? ":last-child" : ""}`
-    );
+
+    const rows = $(tableStats).find(rowQuery(isSeason, isCareer));
     const seasons = [];
 
     rows.each((index, element) => {
-      if (modeType === "career" || index >= 2) {
+      if (isCareer || index >= 2) {
         const obj = Object.assign(
           {},
-          modeType === "season"
-            ? seasonStatsStructure.hitting
-            : careerStatsStructure.hitting
+          isSeason ? seasonStatsStructure.hitting : careerStatsStructure.hitting
         );
         const columns = $(element).find("td");
         const rowData = [];
@@ -43,7 +42,8 @@ async function getStats(config) {
         });
 
         rowData.forEach((item, index, array) => {
-          modeProcessor(modeType, item, index, obj);
+          // todo
+          modeProcessor(isSeason, isCareer, item, index, obj);
         });
 
         seasons.push(obj);
@@ -51,7 +51,7 @@ async function getStats(config) {
     });
 
     let statsObj = {};
-    if (modeType === "season") {
+    if (isSeason) {
       seasons.splice(-2);
       // return seasons array but remove last two indexes (those are career numbers and header)
 
