@@ -1,3 +1,5 @@
+const { determineObjStrc } = require("./determineDataStruc");
+
 const seasonStatsStructure = {
   hitting: {
     year: null,
@@ -116,4 +118,5 @@ module.exports = {
   seasonStatsStructure,
   careerStatsStructure,
   allStatsStructure,
+  determineObjStrc,
 };
