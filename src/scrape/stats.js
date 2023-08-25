@@ -2,7 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const { categoryType } = require("../utils/constants.js");
 const { tableQuery, rowQuery } = require("../utils/cheerioQueries.js");
-const { rowsData } = require("../utils/processors.js");
+const { rowsData } = require("../utils/parse/rowData.js");
 
 async function getStats(config) {
   const {

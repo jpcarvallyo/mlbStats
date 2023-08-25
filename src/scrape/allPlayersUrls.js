@@ -62,7 +62,7 @@ async function generateAllPlayerUrls() {
 
   results.forEach((result, index) => {
     if (result.status === "fulfilled") {
-      console.log(`Promise ${index} fulfilled with value:`, result.value);
+      // console.log(`Promise ${index} fulfilled with value:`, result.value);
     } else {
       console.error(`Promise ${index} rejected with reason:`, result.reason);
     }

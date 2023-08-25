@@ -67,6 +67,7 @@ const seasonProcessor = function (item, index, seasonObj) {
       seasonObj.sluggingAverage = item;
       break;
   }
+  return seasonObj;
 };
 
 const careerProcessor = function (item, index, careerObj) {
@@ -132,16 +133,9 @@ const careerProcessor = function (item, index, careerObj) {
       careerObj.sluggingAverage = item;
       break;
   }
+  return careerObj;
 };
-
-function modeProcessor(isSeason, isCareer, item, index, obj) {
-  if (isSeason) {
-    seasonProcessor(item, index, obj);
-  } else if (isCareer) {
-    careerProcessor(item, index, obj);
-  }
-}
-
 module.exports = {
   modeProcessor,
+  determineObjStrc,
 };

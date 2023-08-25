@@ -554,28 +554,31 @@ const seasonsData = {
 };
 
 const careerData = {
-  career: {
-    years: "23 Years",
-    games: "3,298",
-    atBat: "12,364",
-    runs: "2,174",
-    hits: "3,771",
-    doubles: "624",
-    triples: "98",
-    homeruns: "755",
-    grandSlams: "16",
-    runBattedIn: "2,297",
-    baseOnBalls: "1,402",
-    intentionBallOnBalls: "293",
-    strikeOut: "1,383",
-    sacrificeHit: "21",
-    sacrificeFly: "121",
-    hitByPitch: "32",
-    groundIntoDoublePlay: "328",
-    battingAverage: ".305",
-    onBasePercentage: ".374",
-    sluggingAverage: ".555",
-  },
+  years: "23 Years",
+  games: "3,298",
+  atBat: "12,364",
+  runs: "2,174",
+  hits: "3,771",
+  doubles: "624",
+  triples: "98",
+  homeruns: "755",
+  grandSlams: "16",
+  runBattedIn: "2,297",
+  baseOnBalls: "1,402",
+  intentionBallOnBalls: "293",
+  strikeOut: "1,383",
+  sacrificeHit: "21",
+  sacrificeFly: "121",
+  hitByPitch: "32",
+  groundIntoDoublePlay: "328",
+  battingAverage: ".305",
+  onBasePercentage: ".374",
+  sluggingAverage: ".555",
+};
+
+const allHittingStats = {
+  career: careerData,
+  seasons: seasonsData,
 };
 
 const bio = {
@@ -601,4 +604,5 @@ module.exports = {
   seasonsData,
   careerData,
   bio,
+  allHittingStats,
 };
