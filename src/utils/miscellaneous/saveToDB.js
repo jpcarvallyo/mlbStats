@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { connectDB, getDB } = require("../../database");
+const { connectDB, getDB } = require("../../../database");
 // connect to db;
 
 const savePlayerStats = async () => {
