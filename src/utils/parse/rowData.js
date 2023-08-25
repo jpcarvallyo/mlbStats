@@ -1,4 +1,5 @@
-const { modeProcessor, determineObjStrc } = require("../processors/");
+const { modeProcessor } = require("../processors/");
+const { determineObjStrc } = require("../processors/dataShape");
 
 function rowsData(rows, rowConfig) {
   const { isCareer, isSeason, $ } = rowConfig;

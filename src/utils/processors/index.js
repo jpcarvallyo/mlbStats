@@ -1,29 +1,8 @@
 const {
-  allStatsStructure,
-  seasonStatsStructure,
-  careerStatsStructure,
-} = require("../constants");
-
-const {
   seasonProcessor,
   careerProcessor,
   seasonAndCareerProcessor,
 } = require("./hitting");
-
-function determineObjStrc(isSeason, isCareer) {
-  let obj = null;
-  if (isSeason && isCareer) {
-    obj = allStatsStructure;
-  } else {
-    obj = isSeason
-      ? seasonStatsStructure.hitting
-      : careerStatsStructure.hitting;
-  }
-
-  const struc = Object.assign({}, obj);
-
-  return struc;
-}
 
 function modeProcessor(modeConfig) {
   const { isSeason, isCareer, item, index, objStrc } = modeConfig;
@@ -44,5 +23,4 @@ function modeProcessor(modeConfig) {
 
 module.exports = {
   modeProcessor,
-  determineObjStrc,
 };
