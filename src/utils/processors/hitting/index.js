@@ -135,7 +135,11 @@ const careerProcessor = function (item, index, careerObj) {
   }
   return careerObj;
 };
+
+function seasonAndCareerProcessor() {}
+
 module.exports = {
-  modeProcessor,
-  determineObjStrc,
+  seasonProcessor,
+  careerProcessor,
+  seasonAndCareerProcessor,
 };
