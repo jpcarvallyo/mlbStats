@@ -112,16 +112,8 @@ const allStatsStructure = {
   miscellaneous: {},
 };
 
-const categoryType = {
-  hitting: "Hitting",
-  fielding: "Fielding",
-  pitching: "Pitching",
-  miscellaneous: "Miscellaneous Items",
-};
-
 module.exports = {
   seasonStatsStructure,
-  categoryType,
   careerStatsStructure,
   allStatsStructure,
 };

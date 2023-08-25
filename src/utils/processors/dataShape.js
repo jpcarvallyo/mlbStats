@@ -2,9 +2,9 @@ const {
   allStatsStructure,
   seasonStatsStructure,
   careerStatsStructure,
-} = require("../constants");
+} = require("../dataShapes/hitting");
 
-function determineObjStrc(isSeason, isCareer) {
+function determineObjStrc(isSeason, isCareer, category) {
   let obj = null;
   if (isSeason && isCareer) {
     obj = allStatsStructure;
