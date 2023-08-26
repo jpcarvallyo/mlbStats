@@ -8,6 +8,24 @@ function extractPlayerName(string) {
   return string;
 }
 
+function pullName(nameWithTwitterHandle) {
+  const regex = /^([\w\s]+)\s+\(Twitter:\s+@[\w]+\)$/;
+  const match = nameWithTwitterHandle.match(regex);
+  if (match && match[1]) {
+    birthName = match[1];
+  }
+  return birthName;
+}
+
+function getFullPlayerName(birthNameFromBio) {
+  let name = !birthNameFromBio.includes("Twitter")
+    ? birthNameFromBio
+    : pullName(birthNameFromBio);
+
+  return name;
+}
+
 module.exports = {
   extractPlayerName,
+  getFullPlayerName,
 };
