@@ -584,7 +584,7 @@ const allHittingStats = {
 const bio = {
   birthName: "Henry Louis Aaron",
   nickName: "Bad Henry or Hammerin' Hank",
-  bornOn: "02-05-1934  (Aquarius)",
+  bornOn: "02-05-1934",
   diedOn: "01-22-2021 (500 Oldest Living)",
   diedIn: "Atlanta, Georgia",
   cemetery: "South-View Cemetery, Atlanta, Georgia",
