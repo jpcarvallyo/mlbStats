@@ -1,5 +1,8 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const {
+  getFullPlayerName,
+} = require("../utils/miscellaneous/extractPlayerName");
 
 async function getBioData(url) {
   try {
@@ -40,7 +43,7 @@ async function getBioData(url) {
           rowData.push($(colElement).text().trim());
         });
 
-        bioData.birthName = rowData[2];
+        bioData.birthName = getFullPlayerName(rowData[2]);
         bioData.nickName = rowData[4];
         bioData.bornOn = rowData[6];
         bioData.bornIn = rowData[8];
