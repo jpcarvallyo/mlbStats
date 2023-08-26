@@ -1,4 +1,4 @@
-function extractPlayerName(string) {
+function playerName(string) {
   // Assuming string will come in like this;
   // let string = 'HANK AARON STATS'
   string = string.split(" ");
@@ -17,7 +17,7 @@ function pullName(nameWithTwitterHandle) {
   return birthName;
 }
 
-function getFullPlayerName(birthNameFromBio) {
+function extractPlayerName(birthNameFromBio) {
   let name = !birthNameFromBio.includes("Twitter")
     ? birthNameFromBio
     : pullName(birthNameFromBio);
@@ -26,6 +26,6 @@ function getFullPlayerName(birthNameFromBio) {
 }
 
 module.exports = {
+  playerName,
   extractPlayerName,
-  getFullPlayerName,
 };
