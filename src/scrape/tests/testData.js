@@ -582,7 +582,7 @@ const allHittingStats = {
 };
 
 const bio = {
-  birthName: "Henry Louis Aaron (Twitter: @HenryLouisAaron)",
+  birthName: "Henry Louis Aaron",
   nickName: "Bad Henry or Hammerin' Hank",
   bornOn: "02-05-1934  (Aquarius)",
   diedOn: "01-22-2021 (500 Oldest Living)",
