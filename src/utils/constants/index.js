@@ -1,8 +1,8 @@
 const categoryType = {
-  hitting: "Hitting",
-  fielding: "Fielding",
-  pitching: "Pitching",
-  miscellaneous: "Miscellaneous Items",
+  hitting: "hitting",
+  fielding: "fielding",
+  pitching: "pitching",
+  miscellaneous: "miscellaneous items",
 };
 
 module.exports = {

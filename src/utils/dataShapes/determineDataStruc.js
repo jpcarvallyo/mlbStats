@@ -4,15 +4,14 @@ const {
   allStatsStructure,
 } = require("./index");
 
-function determineObjStrc(isSeason, isCareer) {
-  // todo: use category to determine which seasonStat or careerStat structure to use
+function determineObjStrc(isSeason, isCareer, category) {
   let obj = null;
   if (isSeason && isCareer) {
-    obj = allStatsStructure;
+    obj = allStatsStructure[category];
   } else {
     obj = isSeason
-      ? seasonStatsStructure.hitting
-      : careerStatsStructure.hitting;
+      ? seasonStatsStructure[category]
+      : careerStatsStructure[category];
   }
 
   const struc = Object.assign({}, obj);

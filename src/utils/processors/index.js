@@ -5,7 +5,7 @@ const {
 } = require("./hitting");
 
 function modeProcessor(modeConfig) {
-  const { isSeason, isCareer, item, index, objStrc } = modeConfig;
+  const { isSeason, isCareer, item, index, objStrc, careerStat } = modeConfig;
 
   let result = null;
   // todo: configure a type. i.e. hitting, pitching, fielding, mis
@@ -16,7 +16,7 @@ function modeProcessor(modeConfig) {
   } else if (isCareer && isSeason === false) {
     result = careerProcessor(item, index, objStrc);
   } else {
-    result = seasonAndCareerProcessor(item, index, objStrc);
+    result = seasonAndCareerProcessor(item, index, objStrc, careerStat);
   }
   return result;
 }

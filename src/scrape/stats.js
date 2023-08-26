@@ -1,6 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const { categoryType } = require("../utils/constants.js");
+const { categoryType } = require("../utils/constants/");
 const { tableQuery, rowQuery } = require("../utils/cheerioQueries.js");
 const { rowsData } = require("../utils/parse/rowData.js");
 
@@ -26,6 +26,7 @@ async function getStats(config) {
       isCareer,
       isSeason,
       $,
+      category,
     };
     const statsObj = rowsData(rows, rowConfig);
 

@@ -1,4 +1,6 @@
 function tableQuery(category) {
+  category = category.split("");
+  category = category[0].toUpperCase() + category.join("").substring(1);
   return `p:contains("${category} Stats")`;
 }
 

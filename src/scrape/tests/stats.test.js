@@ -26,17 +26,17 @@ describe("getStats function", () => {
       expect(data).toEqual(allHittingStats.career);
     });
 
-    // test("It should output both season and career hitting stats", async () => {
-    //   const config = {
-    //     playerUrl:
-    //       "https://www.baseball-almanac.com/players/player.php?p=aaronha01",
-    //     category: categoryType.hitting,
-    //     isSeason: true,
-    //     isCareer: true,
-    //   };
-    //   const data = await getStats(config);
-    //   expect(data).toEqual(allHittingStats);
-    // });
+    test("It should output both season and career hitting stats", async () => {
+      const config = {
+        playerUrl:
+          "https://www.baseball-almanac.com/players/player.php?p=aaronha01",
+        category: categoryType.hitting,
+        isSeason: true,
+        isCareer: true,
+      };
+      const data = await getStats(config);
+      expect(data).toEqual(allHittingStats);
+    });
   });
   // describe("fielding stats", () => {
   //   test("It should output all fielding stats from each season", async () => {

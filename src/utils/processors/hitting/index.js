@@ -136,7 +136,16 @@ const careerProcessor = function (item, index, careerObj) {
   return careerObj;
 };
 
-function seasonAndCareerProcessor() {}
+function seasonAndCareerProcessor(item, index, obj, careerStat) {
+  let data = null;
+
+  if (careerStat) {
+    data = careerProcessor(item, index, obj.career);
+  } else {
+    data = seasonProcessor(item, index, obj.seasons);
+  }
+  return data;
+}
 
 module.exports = {
   seasonProcessor,
