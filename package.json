@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx jest",
-    "start": "NODE_ENV=production node src/index.js",
-    "dev": "NODE_ENV=development nodemon src/index.js",
-    "savePlayerStats": "NODE_ENV=local node src/utils/miscellaneous/saveToDB.js"
+    "scrape:player": "NODE_ENV=local node database/seedCareerStats.js"
   },
   "keywords": [
     "mlb"
