@@ -14,7 +14,12 @@ function rowQuery(isSeason, isCareer) {
   return query;
 }
 
+function nameQuery() {
+  return `div.intro h1`;
+}
+
 module.exports = {
   tableQuery,
   rowQuery,
+  nameQuery,
 };
