@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-async function bioData(url) {
+async function getBioData(url) {
   try {
     const response = await axios.get(url);
     const html = response.data;
@@ -64,4 +64,4 @@ async function bioData(url) {
   }
 }
 
-module.exports = { bioData };
+module.exports = { getBioData };
