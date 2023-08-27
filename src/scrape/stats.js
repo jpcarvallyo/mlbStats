@@ -16,23 +16,29 @@ async function getStats(config) {
     const response = await axios.get(url);
     const html = response.data;
     const $ = cheerio.load(html);
-    const statsObj = categories.map((category) => {
-      const tableStats = $("table.boxed").filter((index, element) => {
-        return $(element).find(tableQuery(category)).length > 0;
-      })[0];
+    const statsObj = categories
+      .map((category) => {
+        const tableStats = $("table.boxed").filter((index, element) => {
+          return $(element).find(tableQuery(category)).length > 0;
+        })[0];
 
-      const rows = $(tableStats).find(rowQuery(isSeason, isCareer));
-      const rowConfig = {
-        isCareer,
-        isSeason,
-        $,
-        category,
-      };
-      const statsObj = rowsData(rows, rowConfig);
+        const rows = $(tableStats).find(rowQuery(isSeason, isCareer));
+        const rowConfig = {
+          isCareer,
+          isSeason,
+          $,
+          category,
+        };
+        const statsObj = rowsData(rows, rowConfig);
 
-      return statsObj;
-    });
-    return statsObj[0];
+        return statsObj;
+      })
+      .reduce((acc, curr, index) => {
+        acc[categories[index]] = curr;
+        return acc;
+      }, {});
+
+    return statsObj;
   } catch (error) {
     console.error("Error:", error);
   }
