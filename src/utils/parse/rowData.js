@@ -1,40 +1,27 @@
-const { modeProcessor } = require("../processors/");
-const { determineObjStrc } = require("../dataShapes/determineDataStruc");
 const { statsReducer } = require("../reducers/");
+const { hittingRows } = require("./filters/hitting");
+const { fieldingRows } = require("./filters/fielding");
+const { categoryType } = require("../constants/");
 
 function rowsData(rows, rowConfig) {
-  const { isCareer, isSeason, $, category } = rowConfig;
-  const seasons = [];
+  let seasons = [];
 
   rows.each((index, element) => {
-    if ((isSeason && index >= 2) || (isCareer && isSeason === false)) {
-      const columns = $(element).find("td");
-      const rowData = [];
-      let obj = null;
-      let objStrc = determineObjStrc(isSeason, isCareer, category);
+    const config = {
+      rowConfig,
+      seasons,
+      index,
+      element,
+    };
+    let season = null;
 
-      columns.each((colIndex, colElement) => {
-        rowData.push($(colElement).text().trim());
-      });
-
-      const careerStat = rowData[0].includes("Years");
-      if (rowData[0] === "Career") {
-      } else {
-        rowData.forEach((item, index) => {
-          const modeConfig = {
-            isSeason,
-            isCareer,
-            item,
-            index,
-            objStrc,
-            careerStat,
-            category,
-          };
-          obj = modeProcessor(modeConfig);
-        });
-
-        seasons.push({ ...obj });
-      }
+    switch (rowConfig.category) {
+      case categoryType.hitting:
+        season = hittingRows(config);
+        break;
+      case categoryType.fielding:
+        season = fieldingRows(config);
+        break;
     }
   });
 

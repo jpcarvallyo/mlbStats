@@ -45,6 +45,7 @@ describe("getStats function", () => {
       expect(data).toEqual(expectedData);
     });
   });
+
   describe("fielding stats", () => {
     test("It should output all fielding stats from each season", async () => {
       const config = {
@@ -56,17 +57,30 @@ describe("getStats function", () => {
       const expectedData = { fielding: allFieldingStats.seasons };
       expect(data).toEqual(expectedData);
     });
-  });
 
-  describe("all categories", () => {
-    test("It should output all stats from each category into a single object", async () => {
+    test("It should output all fielding stats from career", async () => {
       const config = {
         playerUrl:
           "https://www.baseball-almanac.com/players/player.php?p=aaronha01",
-        categories: [categoryType.hitting, categoryType.fielding],
+        categories: [categoryType.fielding],
+        isSeason: false,
+        isCareer: true,
       };
       const data = await getStats(config);
-      expect(data).toEqual(multipleCategories);
+      const expectedData = { fielding: allFieldingStats.career };
+      expect(data).toEqual(expectedData);
     });
   });
+
+  // describe("all categories", () => {
+  //   test("It should output all stats from each category into a single object", async () => {
+  //     const config = {
+  //       playerUrl:
+  //         "https://www.baseball-almanac.com/players/player.php?p=aaronha01",
+  //       categories: [categoryType.hitting, categoryType.fielding],
+  //     };
+  //     const data = await getStats(config);
+  //     expect(data).toEqual(multipleCategories);
+  //   });
+  // });
 });

@@ -22,7 +22,9 @@ async function getStats(config) {
           return $(element).find(tableQuery(category)).length > 0;
         })[0];
 
-        const rows = $(tableStats).find(rowQuery(isSeason, isCareer));
+        const rows = $(tableStats).find(
+          rowQuery(isSeason, isCareer, categories)
+        );
         const rowConfig = {
           isCareer,
           isSeason,

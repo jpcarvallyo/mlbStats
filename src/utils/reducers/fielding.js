@@ -23,7 +23,11 @@ const fieldingReducer = (config) => {
       return acc;
     }, {});
   } else if (isCareer && isSeason === false) {
-    statsObj = seasons.at(0);
+    statsObj = seasons.reduce((acc, curr) => {
+      acc[`${curr.pos} Totals`] = curr;
+
+      return acc;
+    }, {});
   }
   return statsObj;
 };

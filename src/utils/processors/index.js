@@ -4,7 +4,10 @@ const {
   careerProcessor: hittingCareer,
   seasonAndCareerProcessor: seasonAndCareer,
 } = require("./hitting");
-const { seasonProcessor: fieldingSeason } = require("./fielding");
+const {
+  seasonProcessor: fieldingSeason,
+  careerProcessor: fieldingCareer,
+} = require("./fielding");
 
 const modeProcessor = (modeConfig) => {
   const { isSeason, isCareer, item, index, objStrc, careerStat, category } =
@@ -24,7 +27,7 @@ const modeProcessor = (modeConfig) => {
       if (isSeason && isCareer === false) {
         result = fieldingSeason(item, index, objStrc);
       } else if (isCareer && isSeason === false) {
-        // result = hittingCareer(item, index, objStrc);
+        result = fieldingCareer(item, index, objStrc);
       } else {
         // result = seasonAndCareer(item, index, objStrc, careerStat);
       }
