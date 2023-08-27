@@ -1,4 +1,7 @@
 const fieldingReducer = (config) => {
+  const { rowConfig, seasons } = config;
+  const { isCareer, isSeason } = rowConfig;
+  let statsObj = null;
   if (isCareer && isSeason) {
     statsObj = seasons.reduce(
       (acc, curr) => {
@@ -13,11 +16,8 @@ const fieldingReducer = (config) => {
       { career: {}, seasons: {} }
     );
   } else if (isSeason && isCareer === false) {
-    seasons.splice(-1);
-    // return seasons array but remove last index (career numbers)
-
     statsObj = seasons.reduce((acc, curr) => {
-      if (curr.year.length === 4) {
+      if (curr.year && curr.year.length === 4) {
         acc[curr.year] = curr;
       }
       return acc;

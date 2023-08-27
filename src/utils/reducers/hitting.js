@@ -1,5 +1,3 @@
-const { categoryType } = require("../constants");
-
 const hittingReducer = (config) => {
   const { rowConfig, seasons } = config;
   const { isCareer, isSeason } = rowConfig;

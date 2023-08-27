@@ -1,7 +1,9 @@
 const seasonProcessor = function (item, index, seasonObj) {
   switch (index) {
     case 0:
-      seasonObj.team = item;
+      item = item.split(" ");
+      seasonObj.year = item[0];
+      seasonObj.team = item[1];
       break;
     case 1:
       seasonObj.pos = item;
