@@ -23,6 +23,25 @@ const seasonStatsStructure = {
     onBasePercentage: null,
     sluggingAverage: null,
   },
+  fielding: {
+    team: null,
+    pos: null,
+    g: null,
+    gs: null,
+    outs: null,
+    tc: null,
+    "tc/g": null,
+    ch: null,
+    po: null,
+    a: null,
+    e: null,
+    dp: null,
+    pb: null,
+    casb: null,
+    cacs: null,
+    "FLD%": null,
+    rf: null,
+  },
 };
 
 const careerStatsStructure = {

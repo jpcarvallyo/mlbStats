@@ -1,25 +1,41 @@
+const { categoryType } = require("../constants/");
 const {
-  seasonProcessor,
-  careerProcessor,
-  seasonAndCareerProcessor,
+  seasonProcessor: hittingSeason,
+  careerProcessor: hittingCareer,
+  seasonAndCareerProcessor: seasonAndCareer,
 } = require("./hitting");
+const { seasonProcessor: fieldingSeason } = require("./fielding");
 
-function modeProcessor(modeConfig) {
-  const { isSeason, isCareer, item, index, objStrc, careerStat } = modeConfig;
-
+const modeProcessor = (modeConfig) => {
+  const { isSeason, isCareer, item, index, objStrc, careerStat, category } =
+    modeConfig;
   let result = null;
-  // todo: configure a type. i.e. hitting, pitching, fielding, mis
-  // depending on type, call the particular processor.
-
-  if (isSeason && isCareer === false) {
-    result = seasonProcessor(item, index, objStrc);
-  } else if (isCareer && isSeason === false) {
-    result = careerProcessor(item, index, objStrc);
-  } else {
-    result = seasonAndCareerProcessor(item, index, objStrc, careerStat);
+  switch (category) {
+    case categoryType.hitting:
+      if (isSeason && isCareer === false) {
+        result = hittingSeason(item, index, objStrc);
+      } else if (isCareer && isSeason === false) {
+        result = hittingCareer(item, index, objStrc);
+      } else {
+        result = seasonAndCareer(item, index, objStrc, careerStat);
+      }
+      break;
+    case categoryType.fielding:
+      if (isSeason && isCareer === false) {
+        result = fieldingSeason(item, index, objStrc);
+      } else if (isCareer && isSeason === false) {
+        // result = hittingCareer(item, index, objStrc);
+      } else {
+        // result = seasonAndCareer(item, index, objStrc, careerStat);
+      }
+      break;
+    case categoryType.pitching:
+      break;
+    case categoryType.miscellaneous:
+      break;
   }
   return result;
-}
+};
 
 module.exports = {
   modeProcessor,

@@ -1,5 +1,6 @@
 const { modeProcessor } = require("../processors/");
 const { determineObjStrc } = require("../dataShapes/determineDataStruc");
+const { statsReducer } = require("../reducers/");
 
 function rowsData(rows, rowConfig) {
   const { isCareer, isSeason, $, category } = rowConfig;
@@ -27,6 +28,7 @@ function rowsData(rows, rowConfig) {
             index,
             objStrc,
             careerStat,
+            category,
           };
           obj = modeProcessor(modeConfig);
         });
@@ -36,34 +38,12 @@ function rowsData(rows, rowConfig) {
     }
   });
 
-  let statsObj = {};
-  if (isCareer && isSeason) {
-    statsObj = seasons.reduce(
-      (acc, curr) => {
-        if (curr?.years && curr?.years.includes("Years")) {
-          acc.career = curr;
-        } else if (curr.year.length === 4 && curr.year !== "Year") {
-          acc.seasons[curr.year] = curr;
-        }
+  const statsConfig = {
+    rowConfig,
+    seasons,
+  };
 
-        return acc;
-      },
-      { career: {}, seasons: {} }
-    );
-  } else if (isSeason && isCareer === false) {
-    seasons.splice(-1);
-    // return seasons array but remove last index (career numbers)
-
-    statsObj = seasons.reduce((acc, curr) => {
-      if (curr.year.length === 4) {
-        acc[curr.year] = curr;
-      }
-      return acc;
-    }, {});
-  } else if (isCareer && isSeason === false) {
-    statsObj = seasons.at(0);
-  }
-  return statsObj;
+  return statsReducer(statsConfig);
 }
 
 module.exports = {
