@@ -1,12 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const port = 8008;
 const myMiddleware = require("./src/middleware/index.js");
 const routes = require("./src/routes/index.js");
 const app = express();
 const { getStats } = require("../src/scrape/stats.js");
 const { categoryType } = require("../src/utils/constants/");
+const port = 8008;
 
 app.use(cors());
 app.use(express.json());

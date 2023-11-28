@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 // Import routes
-// const wordRouter = require("./word");
+const playerRouter = require("./player");
 
 // bind url routes with the routers
 
-// router.use("/word", wordRouter);
+router.use("/player", playerRouter);
 
 module.exports = router;
