@@ -5,13 +5,11 @@ const { findCategoryType, stringBooleanConverter } = require("../utils");
 
 router.get("/", async (req, res) => {
   try {
-    const { player, category, isSeason, isCareer } = req.query;
-    const sanitizedCategory = findCategoryType(category);
-    console.log("season: ", stringBooleanConverter(isSeason));
-    console.log("career: ", stringBooleanConverter(isCareer));
+    const { player, categories, isSeason, isCareer } = req.query;
+    const sanitizedCategories = findCategoryType(categories);
     const config = {
       playerUrl: `https://www.baseball-almanac.com/players/player.php?p=${player}`,
-      categories: [sanitizedCategory],
+      categories: [...sanitizedCategories],
       isSeason: stringBooleanConverter(isSeason),
       isCareer: stringBooleanConverter(isCareer),
     };
