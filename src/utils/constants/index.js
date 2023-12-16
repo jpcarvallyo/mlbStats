@@ -5,6 +5,11 @@ const categoryType = {
   miscellaneous: "miscellaneous items",
 };
 
+const urls = {
+  player: "https://www.baseball-almanac.com/players/player.php?p=",
+};
+
 module.exports = {
   categoryType,
+  urls,
 };

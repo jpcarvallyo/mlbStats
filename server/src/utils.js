@@ -10,7 +10,7 @@ const { categoryType } = require("../../src/utils/constants/");
 //   if (catKeys) return categoryType[sanitizedCategory];
 // }
 
-function findCategoryType(categories) {
+function findCategoryType(categories, all = false) {
   const catKeys = Object.keys(categoryType);
   const sanitizedCategories = categories
     .split(",")

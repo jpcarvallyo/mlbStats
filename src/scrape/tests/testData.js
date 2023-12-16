@@ -1182,7 +1182,7 @@ const bio = {
   birthName: "Henry Louis Aaron",
   nickName: "Bad Henry or Hammerin' Hank",
   bornOn: "02-05-1934",
-  diedOn: "01-22-2021 (500 Oldest Living)",
+  diedOn: "01-22-2021 (1,000 Oldest Living)",
   diedIn: "Atlanta, Georgia",
   cemetery: "South-View Cemetery, Atlanta, Georgia",
   highSchool: "Allen Institute (Mobile, AL)",

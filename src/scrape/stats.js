@@ -32,14 +32,12 @@ async function getStats(config) {
           category,
         };
         const statsObj = rowsData(rows, rowConfig);
-
         return statsObj;
       })
       .reduce((acc, curr, index) => {
         acc[categories[index]] = curr;
         return acc;
       }, {});
-
     return statsObj;
   } catch (error) {
     console.error("Error:", error);

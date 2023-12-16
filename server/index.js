@@ -5,7 +5,7 @@ const myMiddleware = require("./src/middleware/index.js");
 const routes = require("./src/routes/index.js");
 const app = express();
 const { getStats } = require("../src/scrape/stats.js");
-const { categoryType } = require("../src/utils/constants/");
+const { categoryType, urls } = require("../src/utils/constants/");
 const port = 8008;
 
 app.use(cors());
@@ -28,8 +28,7 @@ app.use("/api", routes);
 
 app.get("/", async (req, res) => {
   const config = {
-    playerUrl:
-      "https://www.baseball-almanac.com/players/player.php?p=aaronha01",
+    playerUrl: `${urls.player}aaronha01`,
     categories: [categoryType.hitting],
     isSeason: false,
     isCareer: true,
