@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 
 // Load the appropriate .env file based on NODE_ENV
 if (process.env.NODE_ENV === "local") {
-  console.log("we in local bish");
   dotenv.config({ path: ".env.development" });
 } else {
   dotenv.config({ path: ".env.production" });
@@ -11,7 +10,7 @@ if (process.env.NODE_ENV === "local") {
 console.log(`env: ${process.env.NODE_ENV}`);
 
 const url = process.env.MONGODB_URI;
-console.log(`url: ${url}`);
+
 let db; // Store the database reference
 
 async function connectDB() {
